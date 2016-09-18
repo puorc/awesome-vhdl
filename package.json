@@ -1,6 +1,6 @@
 {
     "name": "awesome-vhdl",
-    "displayName": "VHDL",
+    "displayName": "awesome-vhdl",
     "description": "vhdl support for vscode",
     "version": "0.0.1",
     "publisher": "puorc",
@@ -16,7 +16,15 @@
         "Languages",
         "Snippets"
     ],
+    "activationEvents": [
+        "onCommand:extension.sayHello"
+    ],
+    "main": "./out/src/extension",
     "contributes": {
+        "commands": [{
+            "command": "extension.sayHello",
+            "title": "Hello World"
+        }],
         "languages": [{
             "id": "vhdl",
             "aliases": ["VHDL", "vhdl"],
@@ -34,5 +42,14 @@
                 "path": "./snippets/snippets.json"
             }
         ]
+    },
+    "scripts": {
+        "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+        "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "typescript": "^1.8.5",
+        "vscode": "^0.11.0"
     }
 }
