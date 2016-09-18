@@ -1,0 +1,38 @@
+{
+    "name": "awesome-vhdl",
+    "displayName": "VHDL",
+    "description": "vhdl support for vscode",
+    "version": "0.0.1",
+    "publisher": "puorc",
+    "homepage": "https://github.com/puorc/vhdl-vscode/blob/master/README.md",
+     "repository": {
+        "type": "git",
+        "url": "https://github.com/puorc/vhdl-vscode"
+    },
+    "engines": {
+        "vscode": "^1.5.0"
+    },
+    "categories": [
+        "Languages",
+        "Snippets"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "vhdl",
+            "aliases": ["VHDL", "vhdl"],
+            "extensions": [".vhd",".vhdl",".vho",".vht"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "vhdl",
+            "scopeName": "source.vhdl",
+            "path": "./syntaxes/vhdl.tmLanguage"
+        }],
+        "snippets": [
+            {
+                "language": "vhdl",
+                "path": "./snippets/snippets.json"
+            }
+        ]
+    }
+}
