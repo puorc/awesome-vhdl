@@ -17,7 +17,7 @@
         "Snippets"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+       "onLanguage:vhdl"
     ],
     "main": "./out/src/extension",
     "contributes": {
