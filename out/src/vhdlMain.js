@@ -1,17 +1,13 @@
 'use strict';
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import vscode = require('vscode');
-import fs = require('fs');
-import path = require('path');
-import cp = require('child_process');
-import { VHDL_MODE } from './vhdlMode';
-
+var vscode = require('vscode');
+var vhdlMode_1 = require('./vhdlMode');
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
+function activate(context) {
     console.log('Congratulations, your extension "awesome-vhdl" is now active!');
-     vscode.languages.setLanguageConfiguration(VHDL_MODE.language, {
+    vscode.languages.setLanguageConfiguration(vhdlMode_1.VHDL_MODE.language, {
         indentationRules: {
             // ^(.*\*/)?\s*\}.*$
             decreaseIndentPattern: /^(.*\*\/)?\s*\}.*$/,
@@ -28,7 +24,6 @@ export function activate(context: vscode.ExtensionContext) {
             ['(', ')'],
             ['<', '>'],
         ],
-
         __electricCharacterSupport: {
             brackets: [
                 { tokenType: 'delimiter.curly.ts', open: '{', close: '}', isElectric: true },
@@ -36,7 +31,6 @@ export function activate(context: vscode.ExtensionContext) {
                 { tokenType: 'delimiter.paren.ts', open: '(', close: ')', isElectric: true }
             ]
         },
-
         __characterPairSupport: {
             autoClosingPairs: [
                 { open: '{', close: '}' },
@@ -48,11 +42,12 @@ export function activate(context: vscode.ExtensionContext) {
             ]
         }
     });
-
     if (vscode.window.activeTextEditor) {
     }
 }
-
+exports.activate = activate;
 // this method is called when your extension is deactivated
-export function deactivate() {
+function deactivate() {
 }
+exports.deactivate = deactivate;
+//# sourceMappingURL=vhdlMain.js.map
