@@ -19,12 +19,8 @@
     "activationEvents": [
        "onLanguage:vhdl"
     ],
-    "main": "./out/src/extension",
+    "main": "./out/src/vhdlMain",
     "contributes": {
-        "commands": [{
-            "command": "extension.sayHello",
-            "title": "Hello World"
-        }],
         "languages": [{
             "id": "vhdl",
             "aliases": ["VHDL", "vhdl"],
