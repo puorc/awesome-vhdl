@@ -22,7 +22,6 @@ function activate(context) {
             ['{', '}'],
             ['[', ']'],
             ['(', ')'],
-            ['<', '>'],
         ],
         __electricCharacterSupport: {
             brackets: [

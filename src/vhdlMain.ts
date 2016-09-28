@@ -26,7 +26,6 @@ export function activate(context: vscode.ExtensionContext) {
             ['{', '}'],
             ['[', ']'],
             ['(', ')'],
-            ['<', '>'],
         ],
 
         __electricCharacterSupport: {
