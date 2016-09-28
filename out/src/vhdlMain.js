@@ -3,10 +3,12 @@
 // Import the module and reference it with the alias vscode in your code below
 var vscode = require('vscode');
 var vhdlMode_1 = require('./vhdlMode');
+var VhdlSuggest_1 = require('./VhdlSuggest');
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
-function activate(context) {
+function activate(ctx) {
     console.log('Congratulations, your extension "awesome-vhdl" is now active!');
+    ctx.subscriptions.push(vscode.languages.registerCompletionItemProvider(vhdlMode_1.VHDL_MODE, new VhdlSuggest_1.Proto3CompletionItemProvider(), '.', '\"'));
     vscode.languages.setLanguageConfiguration(vhdlMode_1.VHDL_MODE.language, {
         indentationRules: {
             // ^(.*\*/)?\s*\}.*$
