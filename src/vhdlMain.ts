@@ -6,13 +6,13 @@ import fs = require('fs');
 import path = require('path');
 import cp = require('child_process');
 import { VHDL_MODE } from './vhdlMode';
-import { Proto3CompletionItemProvider } from './VhdlSuggest';
+import { VhdlCompletionItemProvider } from './VhdlSuggest';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(ctx: vscode.ExtensionContext): void {
-    console.log('Congratulations, your extension "awesome-vhdl" is now active!');
-    ctx.subscriptions.push(vscode.languages.registerCompletionItemProvider(VHDL_MODE, new Proto3CompletionItemProvider(), '.', '\"'));
+    //console.log('Congratulations, your extension "awesome-vhdl" is now active!');
+    ctx.subscriptions.push(vscode.languages.registerCompletionItemProvider(VHDL_MODE, new VhdlCompletionItemProvider(), '.', '\"'));
      vscode.languages.setLanguageConfiguration(VHDL_MODE.language, {
         indentationRules: {
             // ^(.*\*/)?\s*\}.*$

@@ -106,10 +106,10 @@ function createCompletionOption(option, doc) {
     item.documentation = doc;
     return item;
 }
-var Proto3CompletionItemProvider = (function () {
-    function Proto3CompletionItemProvider() {
+var VhdlCompletionItemProvider = (function () {
+    function VhdlCompletionItemProvider() {
     }
-    Proto3CompletionItemProvider.prototype.provideCompletionItems = function (document, position, token) {
+    VhdlCompletionItemProvider.prototype.provideCompletionItems = function (document, position, token) {
         return new Promise(function (resolve, reject) {
             var filename = document.fileName;
             var lineText = document.lineAt(position.line).text;
@@ -177,7 +177,7 @@ var Proto3CompletionItemProvider = (function () {
             return resolve(suggestions);
         });
     };
-    return Proto3CompletionItemProvider;
+    return VhdlCompletionItemProvider;
 }());
-exports.Proto3CompletionItemProvider = Proto3CompletionItemProvider;
+exports.VhdlCompletionItemProvider = VhdlCompletionItemProvider;
 //# sourceMappingURL=VhdlSuggest.js.map

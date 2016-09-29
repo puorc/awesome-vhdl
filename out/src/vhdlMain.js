@@ -7,8 +7,8 @@ var VhdlSuggest_1 = require('./VhdlSuggest');
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 function activate(ctx) {
-    console.log('Congratulations, your extension "awesome-vhdl" is now active!');
-    ctx.subscriptions.push(vscode.languages.registerCompletionItemProvider(vhdlMode_1.VHDL_MODE, new VhdlSuggest_1.Proto3CompletionItemProvider(), '.', '\"'));
+    //console.log('Congratulations, your extension "awesome-vhdl" is now active!');
+    ctx.subscriptions.push(vscode.languages.registerCompletionItemProvider(vhdlMode_1.VHDL_MODE, new VhdlSuggest_1.VhdlCompletionItemProvider(), '.', '\"'));
     vscode.languages.setLanguageConfiguration(vhdlMode_1.VHDL_MODE.language, {
         indentationRules: {
             // ^(.*\*/)?\s*\}.*$

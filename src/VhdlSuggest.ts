@@ -127,7 +127,7 @@ function createCompletionOption(option: string, doc?: string): vscode.Completion
 }
 
 
-export class Proto3CompletionItemProvider implements vscode.CompletionItemProvider {
+export class VhdlCompletionItemProvider implements vscode.CompletionItemProvider {
 
     public provideCompletionItems(document: vscode.TextDocument,
                                   position: vscode.Position,
