@@ -187,7 +187,7 @@ export class Proto3CompletionItemProvider implements vscode.CompletionItemProvid
                         suggestions.push(kwOf);
                     } else if (textBeforeCursor.match(/(in|out|inout|buffer|linkage)\s*$/)) {
                         suggestions.push(...scalaTypes);
-                    } else if (textBeforeCursor.match(/(signal|variable|constant|subtype|type|array)\s*\w*$/)) {
+                    } else if (textBeforeCursor.match(/(signal|variable|constant|subtype|type|array)\s*\w*:\s*$/)) {
                         suggestions.push(...scalaTypes);
                     } else if (textBeforeCursor.match(/(<=|:=)\s*\w*\s*$/)) {
                         suggestions.push(...operatorOptions);

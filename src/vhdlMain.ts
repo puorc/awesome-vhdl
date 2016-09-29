@@ -16,17 +16,15 @@ export function activate(ctx: vscode.ExtensionContext): void {
      vscode.languages.setLanguageConfiguration(VHDL_MODE.language, {
         indentationRules: {
             // ^(.*\*/)?\s*\}.*$
-            decreaseIndentPattern: /^(.*\*\/)?\s*\}.*$/,
+            decreaseIndentPattern: /^end\s+\w*$/,
             // ^.*\{[^}'']*$
-            increaseIndentPattern: /^.*\{[^}'']*$/
+            increaseIndentPattern: /^.*(begin|then|loop|is)$/
         },
         wordPattern: /(-?\d*\.\d\w*)|([^\`\~\!\@\#\%\^\&\*\(\)\-\=\+\[\{\]\}\\\|\;\:\'\"\,\.\<\>\/\?\s]+)/g,
         comments: {
             lineComment: '--',
         },
         brackets: [
-            ['{', '}'],
-            ['[', ']'],
             ['(', ')'],
         ],
 
@@ -40,12 +38,9 @@ export function activate(ctx: vscode.ExtensionContext): void {
 
         __characterPairSupport: {
             autoClosingPairs: [
-                { open: '{', close: '}' },
-                { open: '[', close: ']' },
                 { open: '(', close: ')' },
                 { open: '`', close: '`', notIn: ['string'] },
                 { open: '"', close: '"', notIn: ['string'] },
-                { open: '\'', close: '\'', notIn: ['string', 'comment'] }
             ]
         }
     });
