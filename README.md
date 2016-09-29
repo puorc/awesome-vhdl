@@ -16,7 +16,7 @@ https://github.com/puorc/awesome-vhdl
 - line and block commenting.
 - other features and better syntax analysis will be added soon.
 
-## Change logo
+## Change log
 Please visit the repository for more information.
 
 ## License
