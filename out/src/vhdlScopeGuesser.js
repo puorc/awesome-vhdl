@@ -1,7 +1,7 @@
 'use strict';
 var ENT_BEGIN = /\s*entity\s+(\w*)\s+is.*/;
-var ARCH_BEGIN = /\s*architecture\s+(\w*)\s+is.*/;
-var CONF_BEGIN = /\s*configuration\s+(\w*)\s+is.*/;
+var ARCH_BEGIN = /\s*architecture\s+(\w*)\s+of\s+(\w*)\s+is.*/;
+var CONF_BEGIN = /\s*configuration\s+(\w*)\s+of\s+(\w*)\s+is.*/;
 var SCOPE_END = /\s*end\s+(\w*).*/;
 function guessScope(doc, cursorLineNum) {
     return new ScopeGuesser(cursorLineNum).guess(doc);

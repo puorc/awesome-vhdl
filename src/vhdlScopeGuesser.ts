@@ -4,8 +4,8 @@ import vscode = require('vscode');
 
 
 const ENT_BEGIN = /\s*entity\s+(\w*)\s+is.*/;
-const ARCH_BEGIN = /\s*architecture\s+(\w*)\s+is.*/;
-const CONF_BEGIN = /\s*configuration\s+(\w*)\s+is.*/;
+const ARCH_BEGIN = /\s*architecture\s+(\w*)\s+of\s+(\w*)\s+is.*/;
+const CONF_BEGIN = /\s*configuration\s+(\w*)\s+of\s+(\w*)\s+is.*/;
 const SCOPE_END = /\s*end\s+(\w*).*/;
 
 

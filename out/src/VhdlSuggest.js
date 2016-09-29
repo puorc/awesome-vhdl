@@ -11,6 +11,7 @@ var kwIs = createCompletionKeyword('is');
 var kwBegin = createCompletionKeyword('begin');
 var kwEnd = createCompletionKeyword('end');
 var kwMap = createCompletionKeyword('map');
+var kwOf = createCompletionKeyword('of');
 var operatorOptions = [
     createCompletionOption('abs'),
     createCompletionOption('and'),
@@ -38,7 +39,16 @@ var archTypeOptions = [
     createCompletionOption('subtype'),
     createCompletionOption('variable'),
     createCompletionOption('assert'),
+    createCompletionOption('severity'),
+    createCompletionOption('report'),
     createCompletionOption('process'),
+    createCompletionOption('with'),
+    createCompletionOption('select'),
+    createCompletionOption('when'),
+    createCompletionOption('others'),
+    createCompletionOption('block'),
+    createCompletionOption('function'),
+    createCompletionOption('procedure'),
 ];
 var portTypeOptions = [
     createCompletionOption('in'),
@@ -63,7 +73,7 @@ var scalaTypes = [
     createCompletionKeyword('character', ""),
     createCompletionKeyword('string', "\nString for VHDL.  \n    "),
     createCompletionOption('downto'),
-    createCompletionOption('severity'),
+    createCompletionOption('std_logic'),
 ];
 function createCompletionKeyword(label, doc) {
     var item = new vscode.CompletionItem(label);
@@ -112,15 +122,34 @@ var Proto3CompletionItemProvider = (function () {
                     break;
                 }
                 case vhdlScopeGuesser_1.VhdlScopeKind.Entity: {
-                    suggestions.push.apply(suggestions, entityOptions);
-                    suggestions.push.apply(suggestions, scalaTypes);
-                    suggestions.push.apply(suggestions, portTypeOptions);
-                    suggestions.push(kwBegin);
-                    suggestions.push(kwEnd);
-                    suggestions.push(kwIs);
+                    if (textBeforeCursor.match(/^\s*\w*$/)) {
+                        suggestions.push.apply(suggestions, entityOptions);
+                        suggestions.push.apply(suggestions, portTypeOptions);
+                        suggestions.push(kwBegin);
+                        suggestions.push(kwEnd);
+                    }
+                    else if (textBeforeCursor.match(/(in|out|inout|buffer|linkage)\s*$/)) {
+                        suggestions.push.apply(suggestions, scalaTypes);
+                    }
                     break;
                 }
                 case vhdlScopeGuesser_1.VhdlScopeKind.Architecture: {
+                    if (textBeforeCursor.match(/^\s*\w*$/)) {
+                        suggestions.push.apply(suggestions, archTypeOptions);
+                        suggestions.push(kwBegin);
+                        suggestions.push(kwEnd);
+                        suggestions.push(kwIs);
+                        suggestions.push(kwOf);
+                    }
+                    else if (textBeforeCursor.match(/(in|out|inout|buffer|linkage)\s*$/)) {
+                        suggestions.push.apply(suggestions, scalaTypes);
+                    }
+                    else if (textBeforeCursor.match(/(signal|variable|constant|function|procedure|block|subtype|type|array)\s*\w*$/)) {
+                        suggestions.push.apply(suggestions, scalaTypes);
+                    }
+                    break;
+                }
+                case vhdlScopeGuesser_1.VhdlScopeKind.Configuration: {
                     if (textBeforeCursor.match(/^\s*\w*$/)) {
                     }
                     else if (textBeforeCursor.match(/^\s*option\s+\w*$/)) {
