@@ -1,9 +1,10 @@
 {
     "name": "awesome-vhdl",
-    "displayName": "awesome-vhdl",
-    "description": "vhdl support for vscode",
+    "displayName": "VHDL",
+    "description": "Snippets, syntax highlighting, code completion and so on",
     "version": "0.0.1",
     "publisher": "puorc",
+    "icon": "images/icon.png",
     "homepage": "https://github.com/puorc/vhdl-vscode/blob/master/README.md",
      "repository": {
         "type": "git",
