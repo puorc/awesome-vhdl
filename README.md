@@ -8,6 +8,10 @@ https://github.com/puorc/awesome-vhdl
 
 ![gif1](https://github.com/puorc/awesome-vhdl/raw/master/images/demo.gif)
 
+## Install
+
+ext install awesome-vhdl
+
 ## Features
 - syntax highlighting.
 - code snippets.
