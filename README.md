@@ -2,7 +2,7 @@
 
 VHDL support for Visual Studio Code 
 
-https://github.com/puorc/awesome-vhdl
+https://marketplace.visualstudio.com/items?itemName=puorc.awesome-vhdl
 
 **The terrible publishing system of m$ really makes me exhausted and I have no idea to solve the "Extension not found" error.**
 
