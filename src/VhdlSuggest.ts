@@ -14,6 +14,7 @@ let kwBegin = createCompletionKeyword('begin');
 let kwEnd = createCompletionKeyword('end');
 let kwMap = createCompletionKeyword('map');
 let kwOf = createCompletionKeyword('of');
+let kwFor = createCompletionKeyword('for');
 
 let operatorOptions = [
     createCompletionOption('abs'),
@@ -53,6 +54,22 @@ let archTypeOptions = [
     createCompletionOption('block'),
     createCompletionOption('function'),
     createCompletionOption('procedure'),
+    createCompletionOption('case'),
+    createCompletionOption('else'),
+    createCompletionOption('elsif'),
+    createCompletionOption('for'),
+    createCompletionOption('generate'),
+    createCompletionOption('if'),
+    createCompletionOption('loop'),
+    createCompletionOption('map'),
+    createCompletionOption('next'),
+    createCompletionOption('others'),
+    createCompletionOption('return'),
+    createCompletionOption('wait'),
+    createCompletionOption('then'),
+    createCompletionOption('return'),
+    createCompletionOption('when'),
+    createCompletionOption('while'),
 ];
 
 let portTypeOptions = [
@@ -170,15 +187,15 @@ export class Proto3CompletionItemProvider implements vscode.CompletionItemProvid
                         suggestions.push(kwOf);
                     } else if (textBeforeCursor.match(/(in|out|inout|buffer|linkage)\s*$/)) {
                         suggestions.push(...scalaTypes);
-                    } else if (textBeforeCursor.match(/(signal|variable|constant|function|procedure|block|subtype|type|array)\s*\w*$/)) {
+                    } else if (textBeforeCursor.match(/(signal|variable|constant|subtype|type|array)\s*\w*$/)) {
                         suggestions.push(...scalaTypes);
+                    } else if (textBeforeCursor.match(/(<=|:=)\s*\w*\s*$/)) {
+                        suggestions.push(...operatorOptions);
                     }
                     break;
                 }
                 case VhdlScopeKind.Configuration: {
-                    if (textBeforeCursor.match(/^\s*\w*$/)) {
-                    } else if (textBeforeCursor.match(/^\s*option\s+\w*$/)) {
-                    }
+                    suggestions.push(kwFor);
                     break;
                 }
             }

@@ -12,6 +12,7 @@ var kwBegin = createCompletionKeyword('begin');
 var kwEnd = createCompletionKeyword('end');
 var kwMap = createCompletionKeyword('map');
 var kwOf = createCompletionKeyword('of');
+var kwFor = createCompletionKeyword('for');
 var operatorOptions = [
     createCompletionOption('abs'),
     createCompletionOption('and'),
@@ -49,6 +50,22 @@ var archTypeOptions = [
     createCompletionOption('block'),
     createCompletionOption('function'),
     createCompletionOption('procedure'),
+    createCompletionOption('case'),
+    createCompletionOption('else'),
+    createCompletionOption('elsif'),
+    createCompletionOption('for'),
+    createCompletionOption('generate'),
+    createCompletionOption('if'),
+    createCompletionOption('loop'),
+    createCompletionOption('map'),
+    createCompletionOption('next'),
+    createCompletionOption('others'),
+    createCompletionOption('return'),
+    createCompletionOption('wait'),
+    createCompletionOption('then'),
+    createCompletionOption('return'),
+    createCompletionOption('when'),
+    createCompletionOption('while'),
 ];
 var portTypeOptions = [
     createCompletionOption('in'),
@@ -144,16 +161,16 @@ var Proto3CompletionItemProvider = (function () {
                     else if (textBeforeCursor.match(/(in|out|inout|buffer|linkage)\s*$/)) {
                         suggestions.push.apply(suggestions, scalaTypes);
                     }
-                    else if (textBeforeCursor.match(/(signal|variable|constant|function|procedure|block|subtype|type|array)\s*\w*$/)) {
+                    else if (textBeforeCursor.match(/(signal|variable|constant|subtype|type|array)\s*\w*$/)) {
                         suggestions.push.apply(suggestions, scalaTypes);
+                    }
+                    else if (textBeforeCursor.match(/(<=|:=)\s*\w*\s*$/)) {
+                        suggestions.push.apply(suggestions, operatorOptions);
                     }
                     break;
                 }
                 case vhdlScopeGuesser_1.VhdlScopeKind.Configuration: {
-                    if (textBeforeCursor.match(/^\s*\w*$/)) {
-                    }
-                    else if (textBeforeCursor.match(/^\s*option\s+\w*$/)) {
-                    }
+                    suggestions.push(kwFor);
                     break;
                 }
             }
