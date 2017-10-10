@@ -115,7 +115,7 @@
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>support.block.architecture</string>
+					<string>support.block.architecture.vhdl</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -1000,7 +1000,7 @@
 							|("\S+")
 							# A valid backslash escaped identifier $5
 							|(\\.+\\)
-							# An invalid identifier $5
+							# An invalid identifier $6
 							|(.+?)
 						)
 
@@ -2592,7 +2592,7 @@
 						<key>8</key>
 						<dict>
 							<key>name</key>
-							<string>invalid.illegal.mismatched.identifier</string>
+							<string>invalid.illegal.mismatched.identifier.vhdl</string>
 						</dict>
 					</dict>
 					<key>name</key>
