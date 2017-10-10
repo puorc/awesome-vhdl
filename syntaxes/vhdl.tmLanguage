@@ -115,7 +115,7 @@
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>support.block.architecture</string>
+					<string>support.block.architecture.vhdl</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -615,6 +615,10 @@
 					<key>include</key>
 					<string>#while_pattern</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#loop_pattern</string>
+				</dict>
 			</array>
 		</dict>
 		<key>entity_instantiation_pattern</key>
@@ -996,7 +1000,7 @@
 							|("\S+")
 							# A valid backslash escaped identifier $5
 							|(\\.+\\)
-							# An invalid identifier $5
+							# An invalid identifier $6
 							|(.+?)
 						)
 
@@ -1398,6 +1402,106 @@
 					<string>(\+|\-|&lt;=|=|=&gt;|:=|&gt;=|&gt;|&lt;|/|\||&amp;|(\*{1,2}))</string>
 					<key>name</key>
 					<string>keyword.operator.vhdl</string>
+				</dict>
+			</array>
+		</dict>
+		<key>loop_pattern</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(?x)
+						# From the beginning of the line
+						^\s*
+						(
+							# Check for an identifier $2
+							([a-zA-Z][a-zA-Z0-9_]*)
+
+							# Followed by a colon $3
+							\s*(:)\s*
+						)?
+
+						# The for keyword $4
+						\b((?i:loop))\b
+					</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string></string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.vhdl</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.language.vhdl</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?x)
+						# The word end $1
+						\b((?i:end))\s+
+						(
+							# Followed by keyword loop $3
+							 ((?i:loop))
+
+							# But it really is required $4
+							|(\S+)
+						)\b
+
+						# The matching identifier $7 or an invalid identifier $8
+						(\s+((\2)|(.+?)))?
+
+						# Only space and a semicolon left
+						(?=\s*;)
+					</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.language.vhdl</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.language.vhdl</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>invalid.illegal.loop.keyword.required.vhdl</string>
+						</dict>
+						<key>7</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.tag.plain.loop.vhdl</string>
+						</dict>
+						<key>8</key>
+						<dict>
+							<key>name</key>
+							<string>invalid.illegal.mismatched.identifier.vhdl</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.block.loop.vhdl</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#control_patterns</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#cleanup</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
@@ -2488,7 +2592,7 @@
 						<key>8</key>
 						<dict>
 							<key>name</key>
-							<string>invalid.illegal.mismatched.identifier</string>
+							<string>invalid.illegal.mismatched.identifier.vhdl</string>
 						</dict>
 					</dict>
 					<key>name</key>
