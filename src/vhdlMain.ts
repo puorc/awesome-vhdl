@@ -7,6 +7,12 @@ import path = require('path');
 import cp = require('child_process');
 import { VHDL_MODE } from './vhdlMode';
 import { VhdlCompletionItemProvider } from './VhdlSuggest';
+import { workspace, DiagnosticCollection } from "vscode";
+import * as child from 'child_process';
+import vhdlLinter from "./vhdlLinter";
+
+let diagnosticCollection: DiagnosticCollection;
+var linter: vhdlLinter;
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -47,7 +53,19 @@ export function activate(ctx: vscode.ExtensionContext): void {
 
     if (vscode.window.activeTextEditor) {
     }
+
+    var tmp: child.ChildProcess = child.exec('ghdl -v',{env:process.env},(error:Error, stdout:string, stderr:string) => {
+        let lines = stdout.split(/\r?\n/g);
+        if (lines[0].substring(0,4)=='GHDL'){
+            linter = new vhdlLinter();
+            console.log("GHDL Linter version " + lines[0].substring(5,10) + " Enabled.");
+        }
+        else{
+            console.log("GHDL Linter not found.");
+        }
+    })
 }
+
 
 // this method is called when your extension is deactivated
 export function deactivate() {
