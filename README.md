@@ -14,9 +14,11 @@ https://marketplace.visualstudio.com/items?itemName=puorc.awesome-vhdl
 - code completion.
 - brace matching.
 - line and block commenting.
-- other features and better syntax analysis will be added soon.
+- syntax analysis and highlighting (GHDL integration)
 
 ## Change log
+GHDL integrated for inline linting. Please install GHDL in your system path to make use of the function.
+
 Please visit the repository for more information.
 
 ## License
